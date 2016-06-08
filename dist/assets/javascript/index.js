@@ -5,6 +5,7 @@ $(document).ready(function () {
     var top_of_object = $('.page--body').offset().top - 72;
     var top_of_window = $(window).scrollTop();
 
+
     return top_of_object < top_of_window;
   }
 
@@ -27,6 +28,7 @@ $(document).ready(function () {
   $(window).scroll(function () {
 
     if (checkHeaderLocation()) {
+
       fadeHeaderIn();
     } else {
       fadeHeaderOut();
@@ -42,17 +44,22 @@ $(document).ready(function () {
 
 
   // Init
-  if (checkHeaderLocation()) {
-    fadeHeaderIn();
-  } else {
-    fadeHeaderOut();
-  }
-
-  $('.hidden').each(function (i) {
-    if (isContentVisible($(this))) {
-      $(this).addClass("animate-content");
+  setTimeout(function () {
+    if (checkHeaderLocation()) {
+      fadeHeaderIn();
+    } else {
+      fadeHeaderOut();
     }
-  });
+
+    $('.hidden').each(function (i) {
+      if (isContentVisible($(this))) {
+        $(this).addClass("animate-content");
+      }
+    });
+
+
+  }, 750);
+
 
   // Hero
   var scene = $('.hero--scene');
